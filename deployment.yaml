@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gke-demo-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gke-demo
+  template:
+    metadata:
+      labels:
+        app: gke-demo
+    spec:
+      containers:
+      - name: gke-demo-container
+        image: gcr.io/haidertesting/gke-demo-app:latest
+        ports:
+        - containerPort: 80
